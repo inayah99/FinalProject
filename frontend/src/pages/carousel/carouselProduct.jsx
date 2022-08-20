@@ -11,6 +11,9 @@ import {
 
 import Carousel from 'react-bootstrap/Carousel';
 import FormRecipe from '../recipe/form';
+import Login from '../Login';
+import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 
 
 
@@ -18,6 +21,7 @@ const CarouselProduct = () => {
     const [index, setIndex] = useState(0);
     const [formType, setFormType] = useState(null)
     const [formVisible, setFormVisible] = useState(false)
+    const navigate = useNavigate();
 
     const handleSelect = (selectedIndex, e) => {
         setIndex(selectedIndex);
@@ -27,6 +31,28 @@ const CarouselProduct = () => {
         setFormType('create')
         setFormVisible(true)
     }
+
+    const Login = async () => {
+        const[email, setEmail] =useState('');
+        const[password, setPassword] =useState('');
+        const[msg, setMsg]=useState('');
+        const navigate = useNavigate();
+    
+        const Auth = async(e) =>{
+            e.preventDefault();
+            try{
+                await axios.post('http://localhost:5000/login',{
+                    email: email,
+                    password: password,
+                });
+                navigate('/mainpage')
+            } catch(error) {
+                if(error.response){
+                    setMsg(error.response.data.msg);
+                }
+            }
+        }
+        }
 
     return (
         <div className='d-flex container-fluid'>
@@ -68,7 +94,8 @@ const CarouselProduct = () => {
                 </Carousel>
 
                 <div className='d-flex justify-content-center mt-3'>
-                    <Button variant='primary' onClick={() => handleAddRecipe()}>Add New Recipe</Button>
+                    {/* <Button variant='primary' onClick={() => handleAddRecipe()}>Add New Recipe</Button> */}
+                    <Button variant='primary' onClick={Login}>Add New Recipe</Button>
                 </div>
             </Container>
 

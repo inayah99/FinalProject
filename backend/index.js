@@ -1,16 +1,24 @@
 import express from "express";
+import cookieParser from "cookie-parser";
 import cors from "cors";
 import session from "express-session";
 import dotenv from "dotenv";
 import db from "./config/Database.js"
 import SequelizeStore from "connect-session-sequelize";
-import UserRoute from "./routes/UserRoute.js";
 import RecipeRoute from "./routes/RecipeRoute.js";
 import AuthRoute from './routes/AuthRoute.js';
-import fileUpload from 'express-fileupload'
+import fileUpload from 'express-fileupload';
+import router from "./routes/index.js"
 dotenv.config();
 
 const app =  express();
+
+try {
+    await db.authenticate();
+    console.log('Database Connected...')
+} catch (error) {
+    console.error(error);
+}
 
 const sessionStore = SequelizeStore(session.Store);
 
@@ -36,9 +44,11 @@ app.use(cors({
     credentials: true,
     origin: 'http://localhost:3000'
 }));
+
+app.use(cookieParser());
 app.use(express.json());
 app.use(fileUpload());
-app.use(UserRoute);
+app.use(router);
 app.use(RecipeRoute);
 app.use(AuthRoute);
 
@@ -48,3 +58,7 @@ app.use(AuthRoute);
 app.listen(process.env.APP_PORT, () => {
     console.log('Server up and running...');
 });
+
+// app.listen(5000, ()=> {
+//     console.log('Server up and running...');
+// });

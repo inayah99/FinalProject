@@ -2,8 +2,8 @@ import React from "react"
 import CardsCarouselProduct from "../../pages/cards/cardsCarousel";
 import CardsProduct from "../../pages/cards/cardsProduct";
 import CarouselProduct from "../../pages/carousel/carouselProduct";
-import NavBar from "../header";
-import '../header/styless.css'
+import NavBar from "./navbar";
+import './styles.css'
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getMe } from "../features/authSlice";
@@ -33,4 +33,4 @@ const MainPage = () => {
     )
 }
 
-export default MainPage
+export default MainPage;

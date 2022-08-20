@@ -1,31 +1,26 @@
 import React from 'react';
-
 import {
   Routes,
   Route,
   BrowserRouter
 } from 'react-router-dom'
-import MainPage from './component/mainpage';
-import Login from './component/Login/Login';
-import Register from './component/Register/Register'
-import Sidebar from './component/Sidebar';
-
-// const PrivateRoute = () => {
-//   return(
-//     <>
-//     <Header />
-//     </>
-//   )
-// }
+import MainPage from './component/mainpage/index.jsx';
+// import Dashboard from './components/Dashboard.js';
+// import Login from "./components/Login.js";
+// import Register from "./components/Register.js";
+// import Navbar from "./components/Navbar.js";
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
+      <MainPage />
         <Routes>
-          <Route path='/' element={<Login />} />
           <Route path='/mainpage' element={<MainPage />} />
-          <Route path='/register' element={<Register />} />
+          {/* <Route path='/register' element={<Register />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route path="/register" element={ <Register />} />
+          <Route path="/dashboard" element={ <><Navbar /><Dashboard /></>} /> */}
         </Routes>
       </BrowserRouter>
     </>
@@ -33,3 +28,4 @@ const App = () => {
 }
 
 export default App;
+

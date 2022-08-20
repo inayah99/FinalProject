@@ -10,7 +10,7 @@ import {
     CardGroup,
     Modal,
 } from 'react-bootstrap'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 import { useState, useEffect } from "react";
 import axios from 'axios'
 import './cards-styles.css'
@@ -194,10 +194,6 @@ export default CardsProduct;
 //     </Row>
 // ))}
 
-{/* <Link to={`edit/${recipe.id}`}><Button
-    variant="outline-warning"
-    onClick={() => handleEditRecipe()}
->Edit
-</Button></Link> */}
+
 
 
