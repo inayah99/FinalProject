@@ -7,18 +7,13 @@ import {
     Navbar,
 
 } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
-// import { LogOut, reset } from '../features/authSlice';
-
-import './styles.css'
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import './styles.css';
 
 
 const NavBar = () => {
-    // const dispatch = useDispatch();
     const navigate = useNavigate();
-
-
     const Logout = async () => {
         try {
             await axios.delete('http://localhost:5000/logout');
@@ -26,14 +21,8 @@ const NavBar = () => {
         } catch (error) {
             console.log(error);
         }
-
     }
 
-    // const logout = () =>{
-    //     dispatch(LogOut());
-    //     dispatch(reset())
-    //     navigate("/")
-    // }
     return (
         <div>
             <Navbar bg="light" expand='md' sticky="top">

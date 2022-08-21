@@ -10,7 +10,6 @@ import {
     CardGroup,
     Modal,
 } from 'react-bootstrap'
-// import {Link} from 'react-router-dom'
 import { useState, useEffect } from "react";
 import axios from 'axios'
 import './cards-styles.css'
@@ -24,10 +23,10 @@ const CardsProduct = () => {
     const [formEdited, setEditedForm] = useState(false)
 
     const [page, setPage] = useState(0);
-    const [limit, setLimit] = useState(10);
+    const [limit] = useState(10);
     const [totalPages, setTotalPage] = useState(0);
     const [rows, setRows] = useState(0);
-    const [keyword, setKeyword] = useState('');
+    const [keyword] = useState('');
     const [query, setQuery] = useState("");
     const [msg, setMsg] = useState("");
 
@@ -70,16 +69,6 @@ const CardsProduct = () => {
         }
     }
 
-    // const fetchData = async () => {
-    //     await axios.get(`http://localhost:5000/recipes?search_query=${keyword}&page=${page}&limit=${limit}`)
-    //         .then(({ data }) => {
-    //             setRecipes(data)
-    //             setPage(data.page);
-    //             setTotalPage(data.totalPages);
-    //             setRows(data.totalRows)
-    //         })
-    //         .catch(err => console.log(err))
-    // }
 
     useEffect(() => {
         fetchData();

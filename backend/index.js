@@ -7,7 +7,6 @@ import db from "./config/Database.js"
 import SequelizeStore from "connect-session-sequelize";
 import router from "./routes/index.js";
 import RecipeRoute from "./routes/RecipeRoute.js";
-// import AuthRoute from './routes/AuthRoute.js';
 import fileUpload from 'express-fileupload';
 import {getRecipe} from "./controllers/RecipesController.js"
 dotenv.config();
@@ -38,16 +37,7 @@ app.use(fileUpload());
 app.use(express.static("public"));
 app.use(router);
 app.use(RecipeRoute);
-// app.use(AuthRoute);
-// RecipeRoute()
-// const router = express.Router();
-//     console.log("hallo");
-// router.get('/recipes', getRecipe);
-
-
-
 // store.sync();
-
 
 app.listen(process.env.APP_PORT, () => {
     console.log('Server up and running...');

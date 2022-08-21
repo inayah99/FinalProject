@@ -43,7 +43,6 @@ export const getRecipe = async (req, res) => {
         res.json({
             result: result, page:page, limit:limit, totalPage:totalPage, totalRows:totalRows
         });
-        // res.status(200).json(result)
     } catch (error) {
         console.log(error.message);
     }
@@ -60,10 +59,7 @@ export const getRecipeById = async (req, res) => {
     } catch (error) {
         console.log(error.message);
     }
-
 }
-
-
 
 export const createRecipe = async (req, res) => {
     if (req.files === null) return res.status(400).json({ msg: "No File Uploaded" })

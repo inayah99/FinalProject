@@ -5,9 +5,6 @@ import CarouselProduct from "../../pages/carousel/carouselProduct";
 import NavBar from "./navbar";
 import './styles.css'
 
-
-
-
 const MainPage = () => {
     
     return (

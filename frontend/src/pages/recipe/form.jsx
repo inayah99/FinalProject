@@ -56,29 +56,6 @@ const FormRecipe = ({ setFormVisible, type, fetchData, formEdited }) => {
         setPreview(URL.createObjectURL(image))
     }
 
-    // const submitRecipe = async (e) => {
-    //     e.preventDefault();
-    //     const formData = new FormData();
-    //     formData.append("title", title)
-    //     formData.append("bahan", bahan)
-    //     formData.append("steps", steps)
-    //     formData.append("file", file)
-
-    //     try{
-    //         await axios.post('http://localhost:5000/recipes', formData, {
-    //             headers:{
-    //                 "Content-type": "multipart/form-data"
-    //             }
-    //         })
-    //         setFormVisible(false)
-    //     } catch (error){
-    //         console.log(error);
-    //     }
-    // }
-
-
-
-
     return (
         <Row>
             <Form onSubmit={submitRecipe}>
