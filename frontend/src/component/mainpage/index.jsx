@@ -20,7 +20,7 @@ const MainPage = () => {
 
     useEffect(() =>{
         if(isError){
-            navigate("/")
+            // navigate("/")
         }
     }, [isError, navigate])
     return (

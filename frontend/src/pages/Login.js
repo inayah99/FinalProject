@@ -16,7 +16,8 @@ const Login = () => {
                 email: email,
                 password: password,
             });
-            navigate('/dashboard')
+            window.sessionStorage.setItem("Logged",true)
+            navigate('/mainpage')
         } catch(error) {
             if(error.response){
                 setMsg(error.response.data.msg);

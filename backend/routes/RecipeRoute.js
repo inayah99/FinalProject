@@ -6,21 +6,13 @@ import{
     updateRecipe,
     deleteRecipe
 } from '../controllers/RecipesController.js'
-import { verifyUser } from '../middleware/AuthUser.js';
-
+// import { verifyUser } from '../middleware/AuthUser.js';
+import { verifyToken } from '../middleware/VerifyToken.js';
 const router = express.Router();
-
-router.get('/recipes',  verifyUser, getRecipe);
-router.get('/recipes/:id',  verifyUser, getRecipeById);
-router.post('/recipes', verifyUser, createRecipe);
-router.patch('/recipes/:id', verifyUser, updateRecipe);
-router.delete('/recipes/:id', verifyUser, deleteRecipe);
-
-// router.get('/recipes', verifyUser, adminOnly, getRecipe);
-// router.get('/recipes/:id', verifyUser, adminOnly, getRecipeById);
-// router.post('/recipes', verifyUser, adminOnly, createRecipe);
-// router.patch('/recipes/:id', verifyUser, adminOnly, updateRecipe);
-// router.delete('/recipes/:id', verifyUser, adminOnly, deleteRecipe);
-
+router.get('/recipes', verifyToken, getRecipe);
+router.get('/recipes/:id',  verifyToken, getRecipeById);
+router.post('/recipes', verifyToken, createRecipe);
+router.patch('/recipes/:id', verifyToken, updateRecipe);
+router.delete('/recipes/:id', verifyToken, deleteRecipe);
 
 export default router;

@@ -1,9 +1,10 @@
 import Recipe from "../models/RecipeModel.js";
-import path from 'path'
-import fs from 'fs'
-import { Op } from 'sequelize'
+import path from 'path';
+import fs from 'fs';
+import { Op, QueryTypes} from 'sequelize';
 import Users from "../models/UserModel.js";
 import { url } from "inspector";
+import db from "../config/Database.js";
 
 export const getRecipe = async (req, res) => {
     // try {
@@ -13,6 +14,8 @@ export const getRecipe = async (req, res) => {
     //     console.log(error.message);
     // }
     try {
+        console.log("ok");
+        const {sequelize} = db;
         const page = parseInt(req.query.page) || 0;
         const limit = parseInt(req.query.limit) || 10;
         const search = req.query.search_query || "";
@@ -28,58 +31,37 @@ export const getRecipe = async (req, res) => {
         });
         const totalPage = Math.ceil(totalRows / limit);
         let result;
-        if (req.role === "admin") {
-            result = await Recipe.findAll({
-                attributes: ['uuid', 'name', 'bahan', 'steps', 'deskripsi', 'image', 'url'],
-                include: [{
-                    model: Users,
-                    attributes: ['name', 'email'],
-                }],
-                where: {
-                    [Op.or]: [{
-                        name: {
-                            [Op.like]: '%' + search + '%'
-                        }
-                    }]
-                },
-                offset: offset,
-                limit: limit,
-                order: [
-                    ['id', 'DESC']
-                ]
-            })
-            res.json({
-                result: result, page: page, limit: limit, totalPage: totalPage, totalRows: totalRows
-            });
-        } else {
-            result = await Recipe.findAll({
-                attributes: ['uuid', 'name', 'bahan', 'steps', 'deskripsi', 'image','url'],
-                include: [{
-                    model: Users,
-                    attributes: ['name', 'email'],
-                }],
-                where: {
-                    userId: req.userId,
-                    [Op.or]: [{
-                        name: {
-                            [Op.like]: '%' + search + '%'
-                        }
-                    }]
-                },
-                offset: offset,
-                limit: limit,
-                order: [
-                    ['id', 'DESC']
-                ]
-            })
-            res.json({
-                result: result, page: page, limit: limit, totalPage: totalPage, totalRows: totalRows
-            });
-        }
+     
+        result = await Recipe.findAll({
+            attributes: ['uuid', 'name', 'bahan', 'steps', 'deskripsi', 'image', 'url'],
+            include: [{
+                model: Users,
+                attributes: ['name', 'email'],
+            }],
+            where: {
+                [Op.or]: [{
+                    name: {
+                        [Op.like]: '%' + search + '%'
+                    }
+                }]
+            },
+            offset: offset,
+            limit: limit,
+            order: [
+                ['id', 'DESC']
+            ]
+        })
+        // const users = await sequelize.query("SELECT * FROM `users`", { type: QueryTypes.SELECT });
+        // console.log(users);
+        res.json({
+            result: result, page: page, limit: limit, totalPage: totalPage, totalRows: totalRows
+        });
+        
         res.status(200).json(result)
 
     } catch (error) {
         console.log(error.message);
+        res.status(500).json({msg: "Eror"})
     }
 }
 
