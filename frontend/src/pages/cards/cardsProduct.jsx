@@ -130,7 +130,7 @@ const CardsProduct = () => {
                                                 </Col>
                                                 <Col>
                                                     <Button variant="outline-danger"
-                                                        onClick={() => deleteRecipe(recipe.uuid)}
+                                                        onClick={() => deleteRecipe(recipe.id)}
                                                     >Delete</Button>
                                                 </Col>
                                             </Row>
@@ -174,26 +174,6 @@ const CardsProduct = () => {
 }
 
 export default CardsProduct;
-
-
-// {recipes.map((recipe) => (
-//     <Row xs={1} sm={4} className="g-3" key={recipe.id}>
-//         {Array.from({ length: 8 }).map((_, idx) => (
-//             <Col>
-//                 <Card>
-//                     <Card.Img variant="top" src={recipe.url} className='img-fluid' />
-//                     <Card.Body>
-//                         <Card.Title>{recipe.name}</Card.Title>
-//                         <Card.Text>
-//                             This is a longer card with
-//                         </Card.Text>
-//                     </Card.Body>
-//                 </Card>
-//             </Col>
-//         ))}
-//     </Row>
-// ))}
-
 
 
 
