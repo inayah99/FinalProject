@@ -106,3 +106,7 @@ Content-Type: application/json
 ###
 // POST DATA RECIPE
 DELETE  http://localhost:5000/recipes/f8299fff-883b-475e-81b6-b0c82d20e9be
+
+
+###
+Get http://localhost:5000/recipes?search_query=Nasi&page=0&limit10

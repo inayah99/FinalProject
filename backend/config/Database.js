@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 
-const db = new Sequelize('resepsharing_db', 'root', 'R4has1a99!',{
+const db = new Sequelize('resepsharing_db', 'root', '',{
     host: "localhost",
     dialect: "mysql"
 });

@@ -1,19 +1,12 @@
 import React, { useState } from 'react';
 import {
-    Col,
     Container,
-    Row,
     Button,
-    Card,
-    Pagination,
     Modal
 } from 'react-bootstrap';
 
 import Carousel from 'react-bootstrap/Carousel';
 import FormRecipe from '../recipe/form';
-import Login from '../Login';
-import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
 
 
 
@@ -32,7 +25,7 @@ const CarouselProduct = () => {
             setFormType('create')
             setFormVisible(true)
         } else {
-            window.location.href = "/login"
+            window.location.href = "/"
         }
         
     }

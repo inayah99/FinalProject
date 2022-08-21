@@ -111,7 +111,7 @@ const CardsProduct = () => {
 
                             {recipes.map((recipe) => (
                                 <CardGroup>
-                                    <Card className="cardz" key={recipe.uuid}>
+                                    <Card className="cardz" key={recipe.id}>
                                         <Card.Img variant="top" src={recipe.url} className="cards-img" />
                                         <Card.Body>
                                             <Card.Title><h3>{recipe.name}</h3></Card.Title>

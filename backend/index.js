@@ -27,20 +27,6 @@ const store = new sessionStore({
     db: db
 })
 
-// (async()=>{
-//     await db.sync();
-// })()
-
-// app.use(session({
-//     secret: process.env.SESS_SECRET,
-//     resave: false,
-//     saveUninitialized: true,
-//     store: store,
-//     cookie: {
-//         secure: 'auto'
-//     }
-// }))
-
 app.use(cors({
     credentials: true,
     origin: 'http://localhost:3000'
@@ -49,6 +35,7 @@ app.use(cors({
 app.use(cookieParser());
 app.use(express.json());
 app.use(fileUpload());
+app.use(express.static("public"));
 app.use(router);
 app.use(RecipeRoute);
 // app.use(AuthRoute);

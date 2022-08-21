@@ -23,6 +23,7 @@ const FormRecipe = ({ setFormVisible, type, fetchData, formEdited }) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append("title", title)
+        formData.append("deskripsi", deskripsi)
         formData.append("bahan", bahan)
         formData.append("steps", steps)
         formData.append("file", file)
@@ -32,7 +33,7 @@ const FormRecipe = ({ setFormVisible, type, fetchData, formEdited }) => {
                 .then(() => fetchData())
                 .catch((err) => console.log(err))
         } else {
-            await axios.patch(`http://localhost:5000/recipes/${formEdited.uuid}`, formData)
+            await axios.patch(`http://localhost:5000/recipes/${formEdited.id}`, formData)
                 .then(() => fetchData())
                 .catch((err) => console.log(err))
         }

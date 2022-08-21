@@ -7,7 +7,6 @@ import {
     Navbar,
 
 } from 'react-bootstrap';
-import {useSelector, useDispatch} from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 // import { LogOut, reset } from '../features/authSlice';
@@ -16,19 +15,19 @@ import './styles.css'
 
 
 const NavBar = () => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {user} = useSelector((state) => state.auth)
+
 
     const Logout = async () => {
-        try{
+        try {
             await axios.delete('http://localhost:5000/logout');
-            navigate('/login')
+            navigate('/')
         } catch (error) {
             console.log(error);
         }
 
-        }
+    }
 
     // const logout = () =>{
     //     dispatch(LogOut());
@@ -62,8 +61,8 @@ const NavBar = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            
-            
+
+
         </div>
     )
 }

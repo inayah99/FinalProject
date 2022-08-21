@@ -5,14 +5,6 @@ import Users from "./UserModel.js";
 const { DataTypes } = Sequelize;
 
 const Recipe = db.define('recipe', {
-    uuid:{
-        type: DataTypes.STRING,
-        defaultValue: DataTypes.UUIDV4,
-        allowNull: false,
-        validate:{
-            notEmpty: true
-        }
-    },
     name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -24,36 +16,21 @@ const Recipe = db.define('recipe', {
     bahan: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate:{
-            notEmpty: true,
-        }
     },
     steps: {
         type: DataTypes.STRING,
         allowNull: true,
-        validate:{
-            notEmpty: true,
-        }
     },
     deskripsi: {
         type: DataTypes.STRING,
         allowNull: true,
-        validate:{
-            notEmpty: true,
-        }
     },image:{
         type: DataTypes.STRING,
         allowNull: false,
-        validate:{
-            notEmpty: true,
-        }
     },
     url: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate:{
-            notEmpty: true,
-        }
     },
     userId: {
         type: DataTypes.INTEGER,
